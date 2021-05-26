@@ -1,5 +1,5 @@
-token = "token" #Токен бота
-admin_id = 111111111 #ID администратора
+token = "token" #Bot's token
+admin_id = 111111111 #ID admin
 
 hello_text = db.return_hello()
 
