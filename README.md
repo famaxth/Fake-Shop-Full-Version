@@ -62,19 +62,12 @@ The bot is running!
 
 #### Launching a bot on a remote server ####
 
-You don't want to leave your own PC running 24/7, and it's not practical. We buy VDS (Virtual Dedicated Server, virtual dedicated server) - a remote PC on which a certain amount of power and memory is allocated for you, and to the command line of which you are given access. Most often, the operating system of such a machine will be linux. The fee is small-400 rubles/month, so without much moral suffering, I paid for a VDS based on Debian GNU / Linux and began to figure out how to enable the bot on a remote server.
-How do I connect to VDS?
+You don't want to leave your own PC running 24/7, and it's not practical. We buy VDS (Virtual Dedicated Server, virtual dedicated server) - a remote PC on which a certain amount of power and memory is allocated for you, and to the command line of which you are given access. Most often, the operating system of such a machine will be linux. The fee is small-10$/month, so without much moral suffering, I paid for a VDS based on Debian GNU / Linux and began to figure out how to enable the bot on a remote server.
+How do you connect to VDS?
 
-There are different methods, but we will install it over an SSH connection via Putty. Download Putty via the official website and open it. Enter the IP-address of the VDS and click open.
+There are different methods, but you will install it over an SSH connection via Putty. Download Putty via the official website and open it. Enter the IP-address of the VDS and click open. A window should open where you need to enter your username and password from the server. All the above-mentioned data will be issued by the company from which you will purchase the VDS. Next, the VDS server.
 
-
-
-A window should open where you need to enter your username and password from the server.
-
-
-All the above-mentioned data will be issued by the company from which you will purchase the VDS. Next, the VDS server.
-
-How do I install all the programming languages and libraries you need on the server?
+How do you install all the programming languages and libraries you need on the server?
 
 Here everything is simple. By entering these 5 commands into the server console in this sequence, you will install python3, setuptools, pip3, and the pyTelegramBotAPI library on the server.
 
@@ -122,7 +115,7 @@ cd /program files/putty
 Next, download bot.py, which is located in the catalog C:\Users\Ilya\PycharmProjects\Bot (you need to substitute your directory) in the directory on the server /usr/local/bin/bot.
 
 ```
-pscp.exe "C:\Users\Ilya\PycharmProjects\Bot\bot.py" root@123.123.12.12:/usr/local/bin/bot
+pscp.exe "C:\Users\admin\Bot\app.py" root@123.123.12.12:/usr/local/bin/bot
 ```
 
 Line root@123.123.12.12 you need to replace it with a line like login@IP_address, respectively, with your username and IP address (mentioned above in the section " How do I connect to VDS?"). Replacing bot.py on the names of other files, download all the necessary ones.
@@ -133,7 +126,7 @@ How do I download files from a server to a PC?
 The same as when uploading files to the server on the command line to the directory where it is located putty.exe. And enter this command to download the database file to the desktop of your PC.
 
 ```
-pscp.exe root@123.123.12.12:/usr/local/bin/bot/database "C:\Users\Ilya\Desktop
+pscp.exe root@123.123.12.12:/usr/local/bin/bot/database "C:\Users\admin\Desktop
 ```
 
 
@@ -156,7 +149,7 @@ Create a file on your PC named bot. service with the following content:
 
 ###### Unit
 ```
-Description=Telegram bot 'Town Wars'
+Description=Fake Shop (Telegram Bot)
 After=syslog.target
 After=network.target
 ```
@@ -166,7 +159,7 @@ After=network.target
 Type=simple
 User=root
 WorkingDirectory=/usr/local/bin/bot
-ExecStart=/usr/bin/python3 /usr/local/bin/bot/bot.py
+ExecStart=/usr/bin/python3 /usr/local/bin/bot/app.py
 RestartSec=10
 Restart=always
 ```
@@ -202,7 +195,7 @@ In my case, due to certain implementation errors, specifically multithreading, I
 
 ###### Unit
 ```
-Description=Battle counter for telegram bot 'Town Wars'
+Description=Fake Shop (Telegram Bot)
 After=syslog.target
 After=network.target
 ```
@@ -212,7 +205,7 @@ After=network.target
 Type=simple
 User=root
 WorkingDirectory=/usr/local/bin/bot
-ExecStart=/usr/bin/python3 /usr/local/bin/bot/battle_counter.py
+ExecStart=/usr/bin/python3 /usr/local/bin/bot/app.py
 RestartSec=10
 Restart=always
 ```
