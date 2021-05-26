@@ -4,9 +4,7 @@ import config
 
 
 
-
 rayon_spisok = ["Район 1","Район 2","Район 3","Район 4","Район 5","Район 6","Район 7","Район 8","Район 9","Район 10"]
-
 
 
 
@@ -194,8 +192,6 @@ rayon_perm.row(perm_dzer, perm_indu)
 rayon_perm.row(perm_kirov, perm_lenin)
 rayon_perm.row(perm_motov)
 rayon_perm.row(back)
-
-
 
 
 
