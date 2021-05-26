@@ -1,8 +1,9 @@
+# -*- coding: utf8 -*-
+
 #Production by Berlin
 #Telegram - @por0vos1k
 
 
-# -*- coding: utf8 -*-
 import telebot
 import config
 import SimpleQIWI
