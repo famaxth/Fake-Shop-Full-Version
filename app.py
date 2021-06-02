@@ -1,7 +1,7 @@
 # -*- coding: utf8 -*-
 
-#Production by Berlin
-#Telegram - @por0vos1k
+#Production by Famaxth
+#Telegram - @famaxth
 
 
 import telebot
