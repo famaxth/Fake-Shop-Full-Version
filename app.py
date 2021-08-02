@@ -1,33 +1,32 @@
 # -*- coding: utf8 -*-
 
-#Production by Famaxth
-#Telegram - @famaxth
-
-
-import telebot
-import config
-import SimpleQIWI
 import time
 import random
-import logging
 import urllib
-import datetime
-import menu
-import db
-from io import BytesIO
-from telebot import types
 from time import sleep
-from SimpleQIWI import *
+from io import BytesIO
+from datetime import datetime
 
-db.init_db()
+import telebot
+import SimpleQIWI
+from SimpleQIWI import *
+from telebot import types
+
+import menu
+import config
+
 
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s',
 					level=logging.INFO,
 					filename='bot.log')
 
+db.init_db()
+
 bot = telebot.TeleBot(config.token, parse_mode=None)
-print("Start")
 api = QApi(token=config.token_qiwi, phone=config.qiwi)
+
+print("Start")
+
 
 all_users_file = open("all_users.txt", "r")
 all_users = set()
@@ -192,7 +191,6 @@ def callback_inline(call):
 			bot.send_message(call.message.chat.id, "⏳ Проверка оплаты..")
 			time.sleep(qiwiopl)
 			bot.send_message(call.message.chat.id, "❌ Оплата не найдена.")
-
 
 
 @bot.message_handler(content_types=["text"])
